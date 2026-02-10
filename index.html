@@ -35,6 +35,66 @@
             pointer-events: none;
             z-index: 1;
         }
+
+        /* Splash Screen */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://media1.tenor.com/m/3K705PBKjrQAAAAC/creepy-eyes.gif') center/cover;
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            cursor: pointer;
+            transition: backdrop-filter 0.8s ease-out;
+        }
+
+        .splash-screen.hidden {
+            backdrop-filter: blur(0px);
+            pointer-events: none;
+        }
+
+        .splash-text {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #ff006e;
+            text-align: center;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: pulse 1.5s ease-in-out infinite;
+            transition: all 0.8s ease-out;
+        }
+
+        .splash-text.fade-out {
+            animation: slideUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes slideUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+        }
         
         .container {
             position: relative;
@@ -307,10 +367,19 @@
             .social-links {
                 gap: 1rem;
             }
+
+            .splash-text {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Splash Screen -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-text">click you dumbass...</div>
+    </div>
+
     <div class="container">
         <div class="profile-card">
             <!-- Profile Header -->
@@ -388,16 +457,31 @@
         const audioPlayer = document.getElementById('audioPlayer');
         const playPauseBtn = document.getElementById('playPauseBtn');
         const musicTime = document.getElementById('musicTime');
+        const splashScreen = document.getElementById('splashScreen');
+        const splashText = document.querySelector('.splash-text');
         let musicStarted = false;
+        let splashClicked = false;
 
-        // Auto-play music on first click
-        document.addEventListener('click', function startMusicOnClick() {
-            if (!musicStarted && audioPlayer.paused) {
-                audioPlayer.play();
-                musicStarted = true;
-                updatePlayPauseIcon();
+        // Splash screen click handler
+        splashScreen.addEventListener('click', function() {
+            if (!splashClicked) {
+                splashClicked = true;
+                
+                // Fade out text with animation
+                splashText.classList.add('fade-out');
+                
+                // Remove blur and hide splash screen
+                setTimeout(() => {
+                    splashScreen.classList.add('hidden');
+                }, 800);
+
+                // Start music on splash click
+                if (audioPlayer.paused && !musicStarted) {
+                    audioPlayer.play();
+                    musicStarted = true;
+                    updatePlayPauseIcon();
+                }
             }
-            document.removeEventListener('click', startMusicOnClick);
         });
 
         function previousTrack() {
