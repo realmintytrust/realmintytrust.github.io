@@ -3,30 +3,421 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IXL | Math, Language Arts, Science, Social Studies, and Spanish</title>
-    
-    <!-- Favicon -->
+    <title>GoGuardian's Education - Online Learning Platform</title>
     <link rel="icon" type="image/png" href="images/ixl.png">
-    
-    <!-- Meta Description -->
-    <meta name="description" content="IXL is the world's most popular subscription-based learning site for K–12. Used by over 17 million students, IXL provides personalized learning in more than 17,000 topics, covering math, language arts, science, social studies, and Spanish. Interactive questions, awards, and certificates keep kids motivated as they master skills.">
-    
-    <!-- Open Graph (for Discord, Facebook, etc.) -->
-    <meta property="og:title" content="IXL | Math, Language Arts, Science, Social Studies, and Spanish">
-    <meta property="og:description" content="IXL is the world's most popular subscription-based learning site for K–12. Used by over 17 million students, IXL provides personalized learning in more than 17,000 topics, covering math, language arts, science, social studies, and Spanish. Interactive questions, awards, and certificates keep kids motivated as they master skills.">
-    <meta property="og:image" content="https://aidenybarras-egirl-is.online//images/ixl2.png">
-    <meta property="og:url" content="https://aidenybarras-egirl-is.online/">
-    <meta property="og:type" content="website">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="IXL | Math, Language Arts, Science, Social Studies, and Spanish">
-    <meta name="twitter:description" content="IXL is the world's most popular subscription-based learning site for K–12. Used by over 17 million students, IXL provides personalized learning in more than 17,000 topics, covering math, language arts, science, social studies, and Spanish. Interactive questions, awards, and certificates keep kids motivated as they master skills.">
-    <meta name="twitter:image" content="https://yourdomain.com/images/ixl.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            background: white;
+            color: #667eea;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Sections */
+        section {
+            padding: 3rem 0;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #667eea;
+        }
+        
+        /* Courses Grid */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .course-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        
+        .course-card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .course-card-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-card-body {
+            padding: 1.5rem;
+        }
+        
+        .course-card-body p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .course-level {
+            display: inline-block;
+            background: #f0f0f0;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        /* Features Section */
+        .features {
+            background: #f9f9f9;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .feature-item h3 {
+            font-size: 1.3rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Stats */
+        .stats {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        footer p {
+            margin: 0.5rem 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>GoGuardian's Education</h1>
-
-    <img src="images/ixl.png">
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <img src="images/ixl.png" alt="GoGuardian" style="max-width: 100px; margin-bottom: 1rem;">
+            <h1>GoGuardian's Education</h1>
+            <p>Empowering students with personalized learning experiences</p>
+            <button class="cta-button">Get Started Today</button>
+        </div>
+    </section>
+    
+    <!-- Courses Section -->
+    <section id="courses">
+        <div class="container">
+            <h2>Our Popular Courses</h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-card-header">
+                        <h3>Mathematics</h3>
+                    </div>
+                    <div class="course-card-body">
+                        <p>Master algebra, geometry, calculus, and more with interactive lessons and practice problems.</p>
+                        <span class="course-level">K-12 & College</span>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-card-header">
+                        <h3>Language Arts</h3>
+                    </div>
+                    <div class="course-card-body">
+                        <p>Improve reading, writing, grammar, and comprehension skills with engaging content.</p>
+                        <span class="course-level">K-12</span>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-card-header">
+                        <h3>Science</h3>
+                    </div>
+                    <div class="course-card-body">
+                        <p>Explore biology, chemistry, physics, and earth science through interactive experiments.</p>
+                        <span class="course-level">K-12</span>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-card-header">
+                        <h3>Social Studies</h3>
+                    </div>
+                    <div class="course-card-body">
+                        <p>Learn history, geography, civics, and cultural studies with engaging narratives.</p>
+                        <span class="course-level">K-12</span>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-card-header">
+                        <h3>Spanish Language</h3>
+                    </div>
+                    <div class="course-card-body">
+                        <p>Build fluency in Spanish through conversation, grammar, and cultural immersion.</p>
+                        <span class="course-level">K-12</span>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-card-header">
+                        <h3>Test Prep</h3>
+                    </div>
+                    <div class="course-card-body">
+                        <p>Prepare for standardized tests with targeted practice and expert guidance.</p>
+                        <span class="course-level">Advanced</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Why Choose Us?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">📚</div>
+                    <h3>Comprehensive Curriculum</h3>
+                    <p>17,000+ topics covering all major subjects from kindergarten to college level.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Personalized Learning</h3>
+                    <p>Adaptive learning paths that adjust to each student's pace and learning style.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Gamified Experience</h3>
+                    <p>Earn awards, certificates, and track progress with interactive challenges.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">👨‍🏫</div>
+                    <h3>Expert Instruction</h3>
+                    <p>Learn from experienced educators using proven teaching methodologies.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📱</div>
+                    <h3>Multi-Device Access</h3>
+                    <p>Learn anywhere, anytime on desktop, tablet, or mobile devices.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📊</div>
+                    <h3>Progress Tracking</h3>
+                    <p>Detailed analytics help students and parents monitor learning outcomes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Stats Section -->
+    <section id="stats" class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>17M+</h3>
+                    <p>Active Students</p>
+                </div>
+                <div class="stat-item">
+                    <h3>17,000+</h3>
+                    <p>Learning Topics</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Parent Satisfaction</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>Customer Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About GoGuardian's Education</h2>
+            <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 1rem;">
+                We're committed to revolutionizing education by making quality learning accessible to everyone. 
+                Our platform combines innovative technology with proven teaching methods to help students achieve their goals.
+            </p>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" style="background: #f9f9f9;">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <div style="max-width: 600px; margin: 2rem auto; text-align: center;">
+                <form style="display: flex; flex-direction: column; gap: 1rem;">
+                    <input type="text" placeholder="Your Name" required style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px;">
+                    <input type="email" placeholder="Your Email" required style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px;">
+                    <textarea placeholder="Your Message" rows="5" required style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px; font-family: inherit;"></textarea>
+                    <button type="submit" class="cta-button" style="align-self: center;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 GoGuardian's Education. All rights reserved.</p>
+        <p>Empowering students through personalized learning.</p>
+    </footer>
 </body>
 </html>
