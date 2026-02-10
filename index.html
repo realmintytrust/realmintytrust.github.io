@@ -50,12 +50,16 @@
             justify-content: center;
             z-index: 9999;
             cursor: pointer;
-            transition: backdrop-filter 0.8s ease-out;
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.8s ease-out;
         }
 
         .splash-screen.hidden {
             backdrop-filter: blur(0px);
             pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
         }
 
         .splash-text {
@@ -112,10 +116,10 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            animation: slideUp 0.6s ease-out;
+            animation: cardSlideUp 0.6s ease-out;
         }
         
-        @keyframes slideUp {
+        @keyframes cardSlideUp {
             from {
                 opacity: 0;
                 transform: translateY(30px);
