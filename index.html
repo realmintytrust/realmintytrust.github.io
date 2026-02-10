@@ -130,7 +130,7 @@
         .profile-card {
             background: linear-gradient(135deg, rgba(200, 200, 200, 0.15) 0%, rgba(240, 240, 240, 0.15) 100%);
             border-radius: 20px;
-            padding: 2rem;
+            padding: 3rem 2rem;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
@@ -139,7 +139,7 @@
         .music-card {
             background: linear-gradient(135deg, rgba(200, 200, 200, 0.15) 0%, rgba(240, 240, 240, 0.15) 100%);
             border-radius: 20px;
-            padding: 2rem;
+            padding: 3rem 2rem;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
@@ -168,6 +168,26 @@
             font-size: 60px;
             border: 3px solid rgba(255, 255, 255, 0.2);
             position: relative;
+            overflow: hidden;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://cdn.discordapp.com/avatar-decoration-presets/a_c3cffc19e9784f7d0b005eecdf1b566e.png');
+            background-size: cover;
+            background-position: center;
+            pointer-events: none;
         }
         
         .avatar::before {
@@ -177,6 +197,7 @@
             right: -10px;
             font-size: 30px;
             animation: spin 3s linear infinite;
+            z-index: 1;
         }
         
         @keyframes spin {
@@ -231,8 +252,8 @@
         }
         
         .social-icon {
-            width: 50px;
-            height: 50px;
+            width: 35px;
+            height: 35px;
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -265,17 +286,18 @@
         .music-player {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.5rem;
         }
         
         .music-icon {
-            width: 50px;
-            height: 50px;
+            width: 90px;
+            height: 90px;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            flex-shrink: 0;
         }
 
         .music-icon img {
@@ -337,7 +359,7 @@
 
             .profile-card,
             .music-card {
-                padding: 1.5rem;
+                padding: 2rem 1.5rem;
             }
             
             .username {
@@ -350,6 +372,11 @@
 
             .splash-text {
                 font-size: 1.8rem;
+            }
+
+            .music-icon {
+                width: 70px;
+                height: 70px;
             }
         }
     </style>
@@ -367,7 +394,9 @@
                 <!-- Profile Header Section -->
                 <div class="profile-header">
                     <div class="avatar-container">
-                        <img src="images/randomfurry.jpg" alt="Profile" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255, 255, 255, 0.2); display: block;">
+                        <div class="avatar">
+                            <img src="images/randomfurry.jpg" alt="Profile">
+                        </div>
                     </div>
                     
                     <h1 class="username">𝕄𝕀ℕ𝕋𝕐</h1>
