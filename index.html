@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoGuardian's Education - Online Learning Platform</title>
+    <title>MINTY - Marketing Team</title>
     <link rel="icon" type="image/png" href="images/ixl.png">
     <style>
         * {
@@ -13,411 +13,349 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-        
-        /* Navigation */
-        nav {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        nav ul {
-            list-style: none;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            min-height: 100vh;
             display: flex;
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
             align-items: center;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.3s;
-        }
-        
-        nav a:hover {
-            opacity: 0.8;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-        
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .cta-button {
-            background: white;
-            color: #667eea;
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        /* Sections */
-        section {
-            padding: 3rem 0;
-        }
-        
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            color: #667eea;
-        }
-        
-        /* Courses Grid */
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        
-        .course-card {
-            background: white;
-            border-radius: 10px;
+            justify-content: center;
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
         }
         
-        .course-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        /* Animated background stars */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 60px 70px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 50px 50px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 130px 80px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 90px 10px, #fff, rgba(0,0,0,0));
+            background-size: 200px 200px;
+            pointer-events: none;
+            z-index: 1;
         }
         
-        .course-card-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+        .container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
             padding: 2rem;
-            text-align: center;
         }
         
-        .course-card-header h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .course-card-body {
-            padding: 1.5rem;
-        }
-        
-        .course-card-body p {
-            color: #666;
-            margin-bottom: 1rem;
-        }
-        
-        .course-level {
-            display: inline-block;
-            background: #f0f0f0;
-            padding: 0.4rem 0.8rem;
+        .profile-card {
+            background: rgba(30, 30, 46, 0.9);
             border-radius: 20px;
-            font-size: 0.9rem;
-            color: #667eea;
-            font-weight: bold;
+            padding: 3rem 2rem;
+            max-width: 500px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.6s ease-out;
         }
         
-        /* Features Section */
-        .features {
-            background: #f9f9f9;
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        
-        .feature-item {
+        .profile-header {
             text-align: center;
-            padding: 2rem;
+            margin-bottom: 2rem;
         }
         
-        .feature-item h3 {
-            font-size: 1.3rem;
-            color: #667eea;
-            margin-bottom: 1rem;
+        .avatar-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
         }
         
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff006e 0%, #8338ec 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            position: relative;
         }
         
-        /* Stats */
-        .stats {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
+        .avatar::before {
+            content: '✨';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 30px;
+            animation: spin 3s linear infinite;
         }
         
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
-        .stat-item h3 {
-            font-size: 2.5rem;
+        .username {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff006e 0%, #8338ec 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             margin-bottom: 0.5rem;
         }
         
-        /* Footer */
-        footer {
-            background: #333;
+        .title {
+            color: #a0a0b0;
+            font-size: 0.95rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .location {
+            color: #7a7a8e;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .location::before {
+            content: '📍';
+            font-size: 1rem;
+        }
+        
+        .status-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .status-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .status-text {
+            text-align: left;
+        }
+        
+        .status-username {
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.85rem;
+            margin-left: 0.5rem;
+        }
+        
+        .verified-badge {
+            color: #5865f2;
+        }
+        
+        .online-indicator {
+            width: 12px;
+            height: 12px;
+            background: #43b581;
+            border-radius: 50%;
+            border: 2px solid rgba(30, 30, 46, 0.9);
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .social-icon:hover {
+            background: linear-gradient(135deg, #ff006e 0%, #8338ec 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 0, 110, 0.3);
+        }
+        
+        .music-player {
+            background: rgba(20, 20, 30, 0.8);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .music-icon {
+            font-size: 1.5rem;
+        }
+        
+        .music-info {
+            flex: 1;
+        }
+        
+        .music-title {
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .music-artist {
+            color: #a0a0b0;
+            font-size: 0.8rem;
+        }
+        
+        .music-controls {
+            display: flex;
+            gap: 0.5rem;
+            color: #a0a0b0;
+        }
+        
+        .music-control {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .music-control:hover {
+            color: #ff006e;
+        }
+        
+        .view-count {
+            color: #7a7a8e;
+            font-size: 0.85rem;
             text-align: center;
-            padding: 2rem;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
         
-        footer p {
-            margin: 0.5rem 0;
+        .view-count::before {
+            content: '👁️ ';
         }
         
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav ul {
-                gap: 1rem;
-                flex-wrap: wrap;
+        @media (max-width: 600px) {
+            .profile-card {
+                padding: 2rem 1.5rem;
             }
             
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            h2 {
+            .username {
                 font-size: 1.5rem;
+            }
+            
+            .social-links {
+                gap: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#courses">Courses</a></li>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-    
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <img src="images/ixl.png" alt="GoGuardian" style="max-width: 100px; margin-bottom: 1rem;">
-            <h1>GoGuardian's Education</h1>
-            <p>Empowering students with personalized learning experiences</p>
-            <button class="cta-button">Get Started Today</button>
-        </div>
-    </section>
-    
-    <!-- Courses Section -->
-    <section id="courses">
-        <div class="container">
-            <h2>Our Popular Courses</h2>
-            <div class="courses-grid">
-                <div class="course-card">
-                    <div class="course-card-header">
-                        <h3>Mathematics</h3>
-                    </div>
-                    <div class="course-card-body">
-                        <p>Master algebra, geometry, calculus, and more with interactive lessons and practice problems.</p>
-                        <span class="course-level">K-12 & College</span>
-                    </div>
+    <div class="container">
+        <div class="profile-card">
+            <!-- Profile Header -->
+            <div class="profile-header">
+                <div class="avatar-container">
+                    <div class="avatar">👩‍🦰</div>
+                    <div class="online-indicator"></div>
                 </div>
                 
-                <div class="course-card">
-                    <div class="course-card-header">
-                        <h3>Language Arts</h3>
-                    </div>
-                    <div class="course-card-body">
-                        <p>Improve reading, writing, grammar, and comprehension skills with engaging content.</p>
-                        <span class="course-level">K-12</span>
-                    </div>
-                </div>
-                
-                <div class="course-card">
-                    <div class="course-card-header">
-                        <h3>Science</h3>
-                    </div>
-                    <div class="course-card-body">
-                        <p>Explore biology, chemistry, physics, and earth science through interactive experiments.</p>
-                        <span class="course-level">K-12</span>
-                    </div>
-                </div>
-                
-                <div class="course-card">
-                    <div class="course-card-header">
-                        <h3>Social Studies</h3>
-                    </div>
-                    <div class="course-card-body">
-                        <p>Learn history, geography, civics, and cultural studies with engaging narratives.</p>
-                        <span class="course-level">K-12</span>
-                    </div>
-                </div>
-                
-                <div class="course-card">
-                    <div class="course-card-header">
-                        <h3>Spanish Language</h3>
-                    </div>
-                    <div class="course-card-body">
-                        <p>Build fluency in Spanish through conversation, grammar, and cultural immersion.</p>
-                        <span class="course-level">K-12</span>
-                    </div>
-                </div>
-                
-                <div class="course-card">
-                    <div class="course-card-header">
-                        <h3>Test Prep</h3>
-                    </div>
-                    <div class="course-card-body">
-                        <p>Prepare for standardized tests with targeted practice and expert guidance.</p>
-                        <span class="course-level">Advanced</span>
-                    </div>
+                <h1 class="username">MINTY</h1>
+                <p class="title">Official Marketing Team Member for DogUB</p>
+                <p class="location">Aiden Vs House</p>
+            </div>
+            
+            <!-- Status Info -->
+            <div class="status-info">
+                <div class="status-avatar">👻</div>
+                <div class="status-text">
+                    <span class="status-username">
+                        minty2397
+                        <span class="status-badge verified-badge">✓</span>
+                    </span>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="container">
-            <h2>Why Choose Us?</h2>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon">📚</div>
-                    <h3>Comprehensive Curriculum</h3>
-                    <p>17,000+ topics covering all major subjects from kindergarten to college level.</p>
+            
+            <!-- Social Links -->
+            <div class="social-links">
+                <a class="social-icon" href="#" title="YouTube">▶️</a>
+                <a class="social-icon" href="#" title="Subscribe">📹</a>
+                <a class="social-icon" href="#" title="TikTok">🎵</a>
+                <a class="social-icon" href="#" title="Twitch">🎮</a>
+                <a class="social-icon" href="#" title="Discord">💬</a>
+                <a class="social-icon" href="#" title="Instagram">📷</a>
+                <a class="social-icon" href="#" title="Twitter">⚡</a>
+            </div>
+            
+            <!-- Music Player -->
+            <div class="music-player">
+                <div class="music-icon">🎵</div>
+                <div class="music-info">
+                    <div class="music-title">Sleeper Weather</div>
+                    <div class="music-artist">0:00 ─────────── 3:32</div>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Personalized Learning</h3>
-                    <p>Adaptive learning paths that adjust to each student's pace and learning style.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🏆</div>
-                    <h3>Gamified Experience</h3>
-                    <p>Earn awards, certificates, and track progress with interactive challenges.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">👨‍🏫</div>
-                    <h3>Expert Instruction</h3>
-                    <p>Learn from experienced educators using proven teaching methodologies.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">📱</div>
-                    <h3>Multi-Device Access</h3>
-                    <p>Learn anywhere, anytime on desktop, tablet, or mobile devices.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">📊</div>
-                    <h3>Progress Tracking</h3>
-                    <p>Detailed analytics help students and parents monitor learning outcomes.</p>
+                <div class="music-controls">
+                    <span class="music-control">⏸</span>
+                    <span class="music-control">⏭</span>
                 </div>
             </div>
+            
+            <!-- View Count -->
+            <div class="view-count">217</div>
         </div>
-    </section>
-    
-    <!-- Stats Section -->
-    <section id="stats" class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <h3>17M+</h3>
-                    <p>Active Students</p>
-                </div>
-                <div class="stat-item">
-                    <h3>17,000+</h3>
-                    <p>Learning Topics</p>
-                </div>
-                <div class="stat-item">
-                    <h3>100%</h3>
-                    <p>Parent Satisfaction</p>
-                </div>
-                <div class="stat-item">
-                    <h3>24/7</h3>
-                    <p>Customer Support</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2>About GoGuardian's Education</h2>
-            <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 1rem;">
-                We're committed to revolutionizing education by making quality learning accessible to everyone. 
-                Our platform combines innovative technology with proven teaching methods to help students achieve their goals.
-            </p>
-        </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section id="contact" style="background: #f9f9f9;">
-        <div class="container">
-            <h2>Get in Touch</h2>
-            <div style="max-width: 600px; margin: 2rem auto; text-align: center;">
-                <form style="display: flex; flex-direction: column; gap: 1rem;">
-                    <input type="text" placeholder="Your Name" required style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px;">
-                    <input type="email" placeholder="Your Email" required style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px;">
-                    <textarea placeholder="Your Message" rows="5" required style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px; font-family: inherit;"></textarea>
-                    <button type="submit" class="cta-button" style="align-self: center;">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 GoGuardian's Education. All rights reserved.</p>
-        <p>Empowering students through personalized learning.</p>
-    </footer>
+    </div>
 </body>
 </html>
