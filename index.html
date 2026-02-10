@@ -361,10 +361,10 @@
                         </svg>
                     </button>
                     <button class="music-btn play-btn" id="playPauseBtn" onclick="togglePlay()" title="Play">
-                        <svg class="play-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="play-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none;">
                             <path d="M2 2v16l14-8L2 2z" fill="currentColor"/>
                         </svg>
-                        <svg class="pause-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+                        <svg class="pause-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4 2h3v16H4V2zm9 0h3v16h-3V2z" fill="currentColor"/>
                         </svg>
                     </button>
@@ -377,7 +377,7 @@
             </div>
             
             <!-- Hidden Audio Element -->
-            <audio id="audioPlayer" src="https://cdn.builder.io/o/assets%2Fe3d207b810a949b799c9c6d42daec572%2F102a4e7ae9484a8bb8cb623e09336357?alt=media&token=c8f12e38-7dc1-4df3-b77d-68985678573d&apiKey=e3d207b810a949b799c9c6d42daec572"></audio>
+            <audio id="audioPlayer" src="https://cdn.builder.io/o/assets%2Fe3d207b810a949b799c9c6d42daec572%2F102a4e7ae9484a8bb8cb623e09336357?alt=media&token=c8f12e38-7dc1-4df3-b77d-68985678573d&apiKey=e3d207b810a949b799c9c6d42daec572" autoplay loop></audio>
             
             <!-- View Count -->
             <div class="view-count">217</div>
@@ -386,27 +386,20 @@
 
     <script>
         const audioPlayer = document.getElementById('audioPlayer');
-        const playPauseBtn = document.getElementById('playPauseBtn');
         const musicTime = document.getElementById('musicTime');
-        let musicStarted = false;
 
-        // Auto-play music on first keyboard input
-        document.addEventListener('keydown', function() {
-            if (!musicStarted && audioPlayer.paused) {
-                audioPlayer.play();
-                musicStarted = true;
-                updatePlayPauseIcon();
-            }
-        }, { once: true });
+        // Auto-play music on page load
+        window.addEventListener('load', function() {
+            audioPlayer.play().catch(function(error) {
+                console.log("Autoplay failed, waiting for user interaction");
+            });
+            updatePlayPauseIcon();
+        });
 
-        // Also listen for mouse click to start music
-        document.addEventListener('click', function() {
-            if (!musicStarted && audioPlayer.paused) {
-                audioPlayer.play();
-                musicStarted = true;
-                updatePlayPauseIcon();
-            }
-        }, { once: true });
+        // Also try to play immediately
+        audioPlayer.play().catch(function(error) {
+            console.log("Autoplay failed, waiting for user interaction");
+        });
 
         function previousTrack() {
             audioPlayer.currentTime = 0;
