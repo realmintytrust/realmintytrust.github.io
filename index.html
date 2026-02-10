@@ -249,6 +249,7 @@
         .music-artist {
             color: #a0a0b0;
             font-size: 0.8rem;
+            margin-top: 0.3rem;
         }
         
         .music-controls {
@@ -260,6 +261,7 @@
         .music-control {
             cursor: pointer;
             transition: color 0.3s;
+            font-size: 1.2rem;
         }
         
         .music-control:hover {
@@ -335,18 +337,58 @@
             <div class="music-player">
                 <div class="music-icon">🎵</div>
                 <div class="music-info">
-                    <div class="music-title">Sleeper Weather</div>
-                    <div class="music-artist">0:00 ─────────── 3:32</div>
+                    <div class="music-title">Sweater Weather</div>
+                    <div class="music-artist" id="musicTime">0:00 / 0:00</div>
                 </div>
                 <div class="music-controls">
-                    <span class="music-control">⏸</span>
-                    <span class="music-control">⏭</span>
+                    <span class="music-control" id="playPauseBtn" onclick="togglePlay()">▶️</span>
+                    <span class="music-control" onclick="nextTrack()">⏭️</span>
                 </div>
             </div>
+            
+            <!-- Hidden Audio Element -->
+            <audio id="audioPlayer" src="https://cdn.builder.io/o/assets%2Fe3d207b810a949b799c9c6d42daec572%2F102a4e7ae9484a8bb8cb623e09336357?alt=media&token=c8f12e38-7dc1-4df3-b77d-68985678573d&apiKey=e3d207b810a949b799c9c6d42daec572"></audio>
             
             <!-- View Count -->
             <div class="view-count">217</div>
         </div>
     </div>
+
+    <script>
+        const audioPlayer = document.getElementById('audioPlayer');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const musicTime = document.getElementById('musicTime');
+
+        function togglePlay() {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                playPauseBtn.textContent = '⏸️';
+            } else {
+                audioPlayer.pause();
+                playPauseBtn.textContent = '▶️';
+            }
+        }
+
+        function nextTrack() {
+            audioPlayer.currentTime = 0;
+            audioPlayer.play();
+            playPauseBtn.textContent = '⏸️';
+        }
+
+        function formatTime(seconds) {
+            if (!seconds || isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        audioPlayer.addEventListener('timeupdate', () => {
+            musicTime.textContent = `${formatTime(audioPlayer.currentTime)} / ${formatTime(audioPlayer.duration)}`;
+        });
+
+        audioPlayer.addEventListener('ended', () => {
+            playPauseBtn.textContent = '▶️';
+        });
+    </script>
 </body>
 </html>
