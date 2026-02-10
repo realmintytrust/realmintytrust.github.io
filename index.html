@@ -225,29 +225,41 @@
         .social-links {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 1.5rem;
             flex-wrap: wrap;
         }
         
         .social-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 1.2rem;
             cursor: pointer;
+            overflow: hidden;
         }
-        
-        .social-icon:hover {
-            background: linear-gradient(135deg, #ff006e 0%, #8338ec 100%);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 0, 110, 0.3);
+
+        .social-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover img {
+            transform: scale(1.1);
+        }
+
+        .social-icon.no-link {
+            cursor: default;
+        }
+
+        .social-icon.no-link:hover img {
+            transform: scale(1);
         }
         
         .music-player {
@@ -257,7 +269,19 @@
         }
         
         .music-icon {
-            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .music-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .music-info {
@@ -355,20 +379,36 @@
                 
                 <!-- Social Links Section -->
                 <div class="social-links">
-                    <a class="social-icon" href="#" title="YouTube">▶️</a>
-                    <a class="social-icon" href="#" title="Subscribe">📹</a>
-                    <a class="social-icon" href="#" title="TikTok">🎵</a>
-                    <a class="social-icon" href="#" title="Twitch">🎮</a>
-                    <a class="social-icon" href="#" title="Discord">💬</a>
-                    <a class="social-icon" href="#" title="Instagram">📷</a>
-                    <a class="social-icon" href="#" title="Twitter">⚡</a>
+                    <div class="social-icon no-link">
+                        <img src="images/GrayFire1.gif" alt="Fire">
+                    </div>
+                    <a class="social-icon" href="https://youtube.com/@linkguyminty/" target="_blank" title="YouTube">
+                        <img src="images/BlackYouTube.png" alt="YouTube">
+                    </a>
+                    <a class="social-icon" href="https://tiktok.com/@shadows.links/" target="_blank" title="TikTok">
+                        <img src="images/BlackTikTok.png" alt="TikTok">
+                    </a>
+                    <a class="social-icon" href="https://guns.lol/mintysshadow" target="_blank" title="Guns">
+                        <img src="images/blackguns.png" alt="Guns">
+                    </a>
+                    <a class="social-icon" href="https://discord.com/users/939298459733872730" target="_blank" title="Discord">
+                        <img src="images/BlackDiscord.png" alt="Discord">
+                    </a>
+                    <a class="social-icon" href="https://instagram.com/linkguyminty/" target="_blank" title="Instagram">
+                        <img src="images/BlackInstagram.png" alt="Instagram">
+                    </a>
+                    <div class="social-icon no-link">
+                        <img src="images/GrayFire2.gif" alt="Fire">
+                    </div>
                 </div>
             </div>
             
             <!-- Music Player Card -->
             <div class="music-card">
                 <div class="music-player">
-                    <div class="music-icon">🎵</div>
+                    <div class="music-icon">
+                        <img src="images/creepysmile.png" alt="Now Playing">
+                    </div>
                     <div class="music-info">
                         <div class="music-title">Sweater Weather</div>
                         <div class="music-artist" id="musicTime">0:00 / 0:00</div>
